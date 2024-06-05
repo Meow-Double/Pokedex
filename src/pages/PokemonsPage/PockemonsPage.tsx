@@ -1,13 +1,28 @@
-import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
+import {} from '@utils/api/hooks';
 
-export const PockemonsPage = () => {
-    const [offset, setOffset] = useState(0);
-  const { data, isLoading } = useQuery<any>(['pockemon'], () =>
-    fetch('https://pokeapi.co/api/v2/pokemon/?limit=20&offset=0').then((res) => res.json())
+import { Pokemon } from './Pokemon/Pokemon';
+import { useRequestPokemonQueries } from '@utils/api/hooks/pokemon';
+
+export const PokemonsPage = () => {
+  const [offset, setOffset] = useState(20);
+
+  const resuslts = useRequestPokemonQueries({ offset });
+
+  const isLoading = resuslts.some((result) => result.isLoading);
+
+  if (isLoading) return null;
+
+  const pokemons = resuslts.map((result: any) => result.data.data);
+
+  return (
+    <div className='container'>
+      <button onClick={() => setOffset((prev) => prev + 20)}>more pokemons</button>
+      <div className='grid grid-cols-4 gap-10'>
+        {pokemons.map((pokemon, index: any) => (
+          <Pokemon pokemon={pokemon} key={index} />
+        ))}
+      </div>
+    </div>
   );
-
-  if (isLoading) return <div>loading</div>;
-  
-  return <div>{data.name}</div>;
 };

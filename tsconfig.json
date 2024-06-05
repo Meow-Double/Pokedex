@@ -28,7 +28,7 @@
       "@utils/helpers": ["./utils/helpers"],
       "@utils/contexts": ["./utils/contexts"],
       "@utils/hooks": ["./utils/hooks"]
-    }
+    },
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]

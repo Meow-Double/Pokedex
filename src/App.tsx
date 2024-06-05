@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import '@assets/css/global.css';
 
-import { PockemonsPage } from './pages';
+import { PokemonsPage } from './pages';
 
 
 export const App = () =>(
@@ -14,7 +14,7 @@ export const App = () =>(
     <BrowserRouter>
     
         <Routes>
-         <Route path="/" element={<PockemonsPage />}/>
+         <Route path="/" element={<PokemonsPage />}/>
         </Routes>
     </BrowserRouter>
   );
