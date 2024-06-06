@@ -1,22 +1,21 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import '@assets/css/global.css';
 
-import { PokemonsPage } from './pages';
+import { PokedexPage, PokemonsPage } from './pages';
+import { ROUTES } from './utils/constans/routes';
 
 
-export const App = () =>(
+export const App = () => (
   // const authState = useAuthState();
 
   // if (authState.isLoading) return null;
 
-
- 
-    <BrowserRouter>
-    
-        <Routes>
-         <Route path="/" element={<PokemonsPage />}/>
-        </Routes>
-    </BrowserRouter>
-  );
+  <BrowserRouter>
+    <Routes>
+      <Route path={ROUTES.POKEMONS} element={<PokemonsPage />} />
+      <Route path={ROUTES.POKEDEX} element={<PokedexPage />} />
+    </Routes>
+  </BrowserRouter>
+);
 
 export default App;

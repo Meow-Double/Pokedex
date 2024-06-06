@@ -1,0 +1,3 @@
+.pokemon_container{
+    @apply flex justify-center flex-col rounded p-10 shadow w-96
+}
