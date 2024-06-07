@@ -1,8 +1,9 @@
 import { useState } from 'react';
+
 import {} from '@utils/api/hooks';
+import { useRequestPokemonQueries } from '@utils/api/hooks/pokemon';
 
 import { Pokemon } from './Pokemon/Pokemon';
-import { useRequestPokemonQueries } from '@utils/api/hooks/pokemon';
 
 export const PokemonsPage = () => {
   const [offset, setOffset] = useState(20);

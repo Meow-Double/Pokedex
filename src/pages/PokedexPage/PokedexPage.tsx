@@ -1,7 +1,9 @@
-import { useRequestPokemonQueries } from '@utils/api/hooks/pokemon';
-import styles from './Pokedex.module.css';
-import { useState } from 'react';
 import classnames from 'classnames';
+import { useState } from 'react';
+import { useRequestStatQuery } from 'utils/api/hooks';
+import { useRequestPokemonQueries } from 'utils/api/hooks/pokemon';
+
+import styles from './Pokedex.module.css';
 
 export const PokedexPage = () => {
   const [selectedPokemonId, setSelectedPokemonId] = useState(1);
@@ -15,15 +17,33 @@ export const PokedexPage = () => {
 
   const pokemons = resuslts.map((result: any) => result.data.data);
 
-  // const selectdePokemon = pokemons.find(pokemon => selectedPokemonId === pokemon.id)!;
+  const selectedPokemon = pokemons.find((pokemon) => selectedPokemonId === pokemon.id)!;
+
+  const statsPokemon = useRequestStatQuery({ id: 1 });
 
   return (
     <div className={styles.page_container}>
       <div className={styles.content_container}>
         <div className={styles.card}>
-          <div>title</div>
-          <div>image</div>
-          <div>statics</div>
+          <div className={styles.card_title}>
+            <div className={styles.card_title_name}>{selectedPokemon.name}</div>
+            <div>#00{selectedPokemon.id}</div>
+          </div>
+          <div>
+            <img src={selectedPokemon.sprites.front_default ?? ''} alt='' />
+          </div>
+          <div>
+            <div>statics</div>
+            <ul>
+              {selectedPokemon.stats.map((stat) => (
+                <li>
+                  <div>{stat.stat.name}</div>
+                  <div>{stat.stat.base_stat}</div>
+                  <div />
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <ul className={styles.list_container}>
           {pokemons.map((pokemon) => {

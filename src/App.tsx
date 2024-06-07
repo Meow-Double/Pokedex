@@ -1,8 +1,9 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import '@assets/css/global.css';
 
-import { PokedexPage, PokemonsPage } from './pages';
 import { ROUTES } from './utils/constans/routes';
+import { PokedexPage, PokemonsPage } from './pages';
+
+import '@assets/css/global.css';
 
 
 export const App = () => (

@@ -1,10 +1,8 @@
 import { AxiosRequestConfig } from 'axios';
-import { api } from '@utils/api/instance';
+import { api } from 'utils/api/instance';
 
 interface RequestPokemonParams {
   params: { id: number };
   config?: AxiosRequestConfig;
 }
-export const requestPokemon = ({ config, params }: RequestPokemonParams) => {
-  return api.get(`pokemon/${params.id}`, { ...config, params });
-};
+export const requestPokemon = ({ config, params }: RequestPokemonParams) => api.get(`pokemon/${params.id}`, { ...config, params });
