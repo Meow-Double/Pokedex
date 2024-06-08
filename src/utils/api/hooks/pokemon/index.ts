@@ -1,4 +1,4 @@
-import { requestPokemon } from 'utils/api/requests/';
+import { requestPokemon } from '@utils/api/requests/';
 
 import { useQueries } from '@tanstack/react-query';
 

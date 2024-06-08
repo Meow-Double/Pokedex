@@ -1,4 +1,4 @@
-import { requestStat } from 'utils/api/requests/stat/id';
+import { requestStat } from '@utils/api/requests/stat/id';
 
 import { useQuery } from '@tanstack/react-query';
 

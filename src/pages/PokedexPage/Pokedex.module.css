@@ -9,43 +9,56 @@
 .list_container {
 }
 
-
 .pokemon_item {
-  @apply mb-6 flex items-center justify-center overflow-hidden shadow-xl rounded-l-full bg-zinc-500 py-2 px-4;
+  @apply mb-6 flex items-center justify-center overflow-hidden rounded-l-full bg-zinc-500 py-2 px-4 shadow-xl;
   @apply text-lg font-bold capitalize text-white;
   @apply cursor-pointer transition-transform hover:scale-105 hover:bg-black;
 }
 
 .active_pokemon_item {
-    @apply bg-red-400;
+  @apply bg-red-400;
 
-    @apply hover:bg-red-400;
-  }
+  @apply hover:bg-red-400;
+}
 
 .pokemon_item_image {
   @apply mr-6 h-20 w-20 scale-125 rounded;
 }
 
-
-.card{
-    @apply flex flex-col shadow-xl rounded-xl p-10;
+.card {
+  @apply flex flex-col rounded-xl p-10 shadow-xl mr-6;
 }
 
-
-.card_title{
-  @apply flex justify-between items-center;
+.card_title {
+  @apply flex items-center justify-between;
 }
 
-.card_title_name{
-  @apply text-2xl capitalize font-bold;
+.card_types{
+  @apply flex gap-2 mt-1;
+}
+.card_type{
+  @apply bg-gray-500 py-1 px-3 rounded-full text-white;
+}
+.card_title_name {
+  @apply text-2xl font-bold capitalize;
 }
 
-
-.card_title_id{
+.card_title_id {
   @apply text-lg font-semibold;
 }
 
-
 .card img {
-  @apply h-80;
+  @apply h-80 w-80;
+}
+
+.card_info {
+  @apply flex justify-between p-6;
+}
+
+.card_info_title {
+  @apply text-2xl font-bold text-black;
+}
+
+.card_info_item {
+  @apply mt-1 border-b-2 pb-1;
 }

@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { useState } from 'react';
-import { useRequestStatQuery } from 'utils/api/hooks';
-import { useRequestPokemonQueries } from 'utils/api/hooks/pokemon';
+import { useRequestStatQuery } from '@utils/api/hooks';
+import { useRequestPokemonQueries } from '@utils/api/hooks/pokemon';
 
 import styles from './Pokedex.module.css';
 
@@ -19,8 +19,9 @@ export const PokedexPage = () => {
 
   const selectedPokemon = pokemons.find((pokemon) => selectedPokemonId === pokemon.id)!;
 
-  const statsPokemon = useRequestStatQuery({ id: 1 });
+  // const statsPokemon = useRequestStatQuery({ id: 1 });
 
+  console.log(selectedPokemon);
   return (
     <div className={styles.page_container}>
       <div className={styles.content_container}>
@@ -29,20 +30,35 @@ export const PokedexPage = () => {
             <div className={styles.card_title_name}>{selectedPokemon.name}</div>
             <div>#00{selectedPokemon.id}</div>
           </div>
+          <div className={styles.card_types}>
+            {selectedPokemon.types.map(({ type }) => (
+              <div key={type.name} className={styles.card_type}>{type.name}</div>
+            ))}
+          </div>
           <div>
             <img src={selectedPokemon.sprites.front_default ?? ''} alt='' />
           </div>
-          <div>
-            <div>statics</div>
-            <ul>
-              {selectedPokemon.stats.map((stat) => (
-                <li>
-                  <div>{stat.stat.name}</div>
-                  <div>{stat.stat.base_stat}</div>
-                  <div />
-                </li>
-              ))}
-            </ul>
+          <div className={styles.card_info}>
+            <div>
+              <div className={styles.card_info_title}>statics</div>
+              <ul>
+                {selectedPokemon.stats.map((stat) => (
+                  <li className={styles.card_info_item}>
+                    {stat.stat.name} : {stat.base_stat}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <div className={styles.card_info_title}>Abilities</div>
+              <ul>
+                {selectedPokemon.abilities.map(({ ability }) => (
+                  <li key={ability.name} className={styles.card_info_item}>
+                    {ability.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
         <ul className={styles.list_container}>

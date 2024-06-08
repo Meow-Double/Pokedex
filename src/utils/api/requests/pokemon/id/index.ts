@@ -1,5 +1,5 @@
 import { AxiosRequestConfig } from 'axios';
-import { api } from 'utils/api/instance';
+import { api } from '@utils/api/instance';
 
 interface RequestPokemonParams {
   params: { id: number };
